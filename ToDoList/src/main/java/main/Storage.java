@@ -1,6 +1,6 @@
 package main;
 
-import response.Thing;
+import main.model.Thing;
 
 import java.util.ArrayList;
 import java.util.HashMap;
