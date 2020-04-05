@@ -1,20 +1,31 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>ToDoList</title>
 </head>
 <body>
-    <header>
-        <h3>My ToDoList</h3>
-    </header>
-    <div>
-        <form action="things" method="GET">
-            <input type="submit" name="allThings" value="Показать все книги"/>
-        </form>
-    </div>
-    <footer>
+<header>
+    <h3>My ToDoList</h3>
+</header>
+<div>
+    <form action="addThing" method="POST">
+        <fieldset>
+            <legend>Добавить новую запись</legend>
+            <input type="text" name="name" placeholder="Введите описание"/>
+            <span>Дата выполнения:</span>
+            <input type="date" name="date"/>
+            <input type="submit" name="addThing" value="Добавить"/>
+        </fieldset>
+    </form>
+</div>
+<div>
+    <ol>
+        <li th:each="thing : ${things}" th:text="${thing.name}"></li>
+    </ol>
+</div>
+<footer>
 
-    </footer>
+</footer>
 </body>
 </html>

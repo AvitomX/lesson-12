@@ -18,7 +18,7 @@ public class Thing {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
-    @DateTimeFormat(pattern = "yyyy.MM.dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
     public Thing() {

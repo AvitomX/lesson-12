@@ -2,8 +2,10 @@ package main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.PropertySource;
 
 import java.util.Collections;
+//@PropertySource(value = "classpath:application.yml")
 @SpringBootApplication
 public class Main {
     public static void main(String[] args) {

@@ -1,34 +1,33 @@
 package main;
 
-import main.model.ThingRepository;
+import main.model.ThingsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import main.model.Thing;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
-@RestController
+//@RestController
+@Controller
 public class ThingController {
     @Autowired
-    private ThingRepository thingRepository;
+    private ThingsRepository thingRepository;
 
-    @GetMapping("/things/")
-    public List<Thing> list(){
-        Iterable<Thing> thingIterable = thingRepository.findAll();
-        ArrayList<Thing> things = new ArrayList<>();
-        thingIterable.forEach(e->things.add(e));
-        return things;
+    @GetMapping("/")
+    public String list(Model model){
+        Iterable<Thing> things = thingRepository.findAll();
+        model.addAttribute("things", things);
+        return "index";
     }
 
-    @PostMapping("/things/")
-    public int add(Thing thing){
-        Thing newThing = thingRepository.save(thing);
-        return newThing.getId();
+    @PostMapping("addThing")
+    public String add(Thing thing, Model model){
+        thingRepository.save(thing);
+        return "redirect:/";
     }
 
     @PutMapping("/things/{id}")
