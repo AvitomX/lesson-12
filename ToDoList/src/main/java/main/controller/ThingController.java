@@ -1,6 +1,6 @@
-package main;
+package main.controller;
 
-import main.model.ThingsRepository;
+import main.model.ThingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ import java.util.Optional;
 @Controller
 public class ThingController {
     @Autowired
-    private ThingsRepository thingRepository;
+    private ThingRepository thingRepository;
 
     @GetMapping("/")
     public String list(Model model){
